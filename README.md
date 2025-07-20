@@ -14,16 +14,3 @@ Everything is stored locally in a single encrypted CSV-style file – no servers
 | Instant **search bar**, sort by Name / Category, category bulk-delete | On-disk file is encrypted end-to-end with a master password; every decryption attempt is logged |
 | “Open / Create file” start window with master-password prompt | Simple Caesar-shift cipher keyed by the master password (`Encryptor`) |
 | Single **Save** button (or auto-save on close) | File I/O handled by `Loader.readFile / writeFile` |
-
----
-
-## Quick start
-
-> **Prerequisite:** JDK 17 +
-
-```bash
-# 1. Compile
-javac -d out *.java
-
-# 2. Run GUI
-java -cp out Main
