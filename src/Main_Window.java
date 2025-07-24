@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-public class Main_Window extends JFrame {
+public class Main_Window extends BaseWindow {
     private Database db;
     private File currentFile;
     private String masterPassword;

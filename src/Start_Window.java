@@ -2,15 +2,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-public class Start_Window extends JFrame {
+public class Start_Window extends BaseWindow {
     private JTextField pasField;
     private JLabel status;
     private File select;
 
     public Start_Window() {
-        setSize(400, 200);
+        setTitle("Password Vault");
+        setSize(420, 220);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         JButton open = new JButton("Open file");
         JButton create = new JButton("Create file");
