@@ -3,13 +3,12 @@ import java.awt.*;
 import java.io.File;
 
 public class Start_Window extends BaseWindow {
-    private JTextField pasField;
     private JLabel status;
     private File select;
 
     public Start_Window() {
         setTitle("Password Vault");
-        setSize(420, 220);
+        setSize(420, 110);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -22,7 +21,10 @@ public class Start_Window extends BaseWindow {
             if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 select = chooser.getSelectedFile();
                 status.setText(select.getName());
-                openDatabase();
+                String pass = JOptionPane.showInputDialog(this, "Enter master password");
+                if (pass != null && !pass.isEmpty()) {
+                    openDatabase(pass);
+                }
             }
         });
         create.addActionListener(e -> {
@@ -40,11 +42,6 @@ public class Start_Window extends BaseWindow {
             }
         });
 
-        pasField = new JTextField();
-        JPanel pasPanel = new JPanel(new BorderLayout(5, 5));
-        pasPanel.add(new JLabel("Master password: "), BorderLayout.WEST);
-        pasPanel.add(pasField, BorderLayout.CENTER);
-
         JPanel butPanel = new JPanel(new GridLayout(1, 2, 10, 0));
         butPanel.add(open);
         butPanel.add(create);
@@ -54,22 +51,16 @@ public class Start_Window extends BaseWindow {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        panel.add(butPanel, BorderLayout.NORTH);
-        panel.add(pasPanel, BorderLayout.CENTER);
+        panel.add(butPanel, BorderLayout.CENTER);
         panel.add(status, BorderLayout.PAGE_END);
 
         add(panel);
         setVisible(true);
     }
 
-    public void openDatabase() {
+    public void openDatabase(String pass) {
         if(select == null  || !select.exists()) {
             status.setText("File not found");
-            return;
-        }
-        String pass = pasField.getText();
-        if(pass.isEmpty()) {
-            status.setText("Please enter a password");
             return;
         }
         Database db = Loader.readFile(select, pass);
