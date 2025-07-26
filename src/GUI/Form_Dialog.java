@@ -1,3 +1,7 @@
+package GUI;
+
+import Core.Entry;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,7 +26,7 @@ public class Form_Dialog extends JDialog {
         panel.add(name);
         panel.add(new JLabel("Password:"));
         panel.add(password);
-        panel.add(new JLabel("Category:"));
+        panel.add(new JLabel("Core.Category:"));
         panel.add(category);
         panel.add(new JLabel("Login:"));
         panel.add(login);

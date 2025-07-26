@@ -1,3 +1,5 @@
+package Core;
+
 public class Encryptor {
     public static String encrypt(String plainText, String key) {
         int step = key.chars().sum() % 26;

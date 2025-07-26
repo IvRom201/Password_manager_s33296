@@ -1,3 +1,5 @@
+package Core;
+
 public class Category {
     private String name;
 

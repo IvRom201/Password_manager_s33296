@@ -1,3 +1,10 @@
+package GUI;
+
+import Core.Database;
+import Core.Entry;
+import Core.Loader;
+import Core.TableModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -121,7 +128,7 @@ public class Main_Window extends BaseWindow {
                if (confirm == JOptionPane.YES_OPTION) {
                    db.removeCategory(selectedCat);
                    tableModel.setEntries(db.getEntries());
-                   JOptionPane.showMessageDialog(this, "Category deleted!");
+                   JOptionPane.showMessageDialog(this, "Core.Category deleted!");
                }
            }
         });

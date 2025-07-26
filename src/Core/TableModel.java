@@ -1,8 +1,10 @@
+package Core;
+
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
 public class TableModel extends AbstractTableModel {
-    private final String[] columns = {"Name", "Password", "Category", "Login", "Website", "Location"};
+    private final String[] columns = {"Name", "Password", "Core.Category", "Login", "Website", "Location"};
     private List<Entry> entries;
     public TableModel(List<Entry> entries) {
         this.entries = entries;

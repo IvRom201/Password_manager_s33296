@@ -1,3 +1,8 @@
+package GUI;
+
+import Core.Database;
+import Core.Loader;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;

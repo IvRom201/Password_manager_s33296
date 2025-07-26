@@ -1,3 +1,5 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
@@ -7,7 +9,7 @@ public class BaseWindow extends JFrame {
         setAppIcon();
     }
     private void setAppIcon() {
-        URL iconURL = getClass().getResource("/Images/icon.png");
+        URL iconURL = getClass().getResource("/Assets/icon.png");
         if (iconURL != null) {
             setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL));
         } else {
