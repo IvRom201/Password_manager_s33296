@@ -75,7 +75,6 @@ public class Main_Window extends BaseWindow {
         JButton add = new JButton("Add");
         JButton edit = new JButton("Edit");
         JButton remove = new JButton("Remove");
-        JButton save = new JButton("Save");
         JButton sortName = new JButton("Sort by name");
         JButton sortCategory = new JButton("Sort by category");
         JButton removeCat = new JButton("Remove category");
@@ -107,10 +106,6 @@ public class Main_Window extends BaseWindow {
                 db.removeEntry(entry);
                 tableModel.setEntries(db.getEntries());
             }
-        });
-        save.addActionListener(e -> {
-            Loader.writeFile(db, masterPassword, currentFile);
-            JOptionPane.showMessageDialog(this, "File saved!");
         });
         sortName.addActionListener(e -> {
            db.sortByName();
@@ -156,7 +151,6 @@ public class Main_Window extends BaseWindow {
         buttonPanel.add(edit);
         buttonPanel.add(remove);
         buttonPanel.add(removeCat);
-        buttonPanel.add(save);
         buttonPanel.add(sortName);
         buttonPanel.add(sortCategory);
 

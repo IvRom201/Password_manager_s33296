@@ -46,14 +46,15 @@ public class Form_Dialog extends JDialog {
 
 
         ok.addActionListener(e -> {
-            res = new Entry(name.getText(), password.getText(), category.getText());
-            if (res.getName() == null || res.getPassword() == null || res.getCategory() == null) {
-                JOptionPane.showMessageDialog(frame, "Please enter necessary the fields correctly.");
+            if (name.getText().trim().isEmpty() || password.getText().trim().isEmpty() || category.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(frame, "Please enter the required fields correctly");
+            } else {
+                res = new Entry(name.getText(), password.getText(), category.getText());
+                res.setLogin(login.getText());
+                res.setWebsite(website.getText());
+                res.setLocation(location.getText());
+                dispose();
             }
-            res.setLogin(login.getText());
-            res.setWebsite(website.getText());
-            res.setLocation(location.getText());
-            dispose();
         });
         cancel.addActionListener(e -> {
             res = null;
