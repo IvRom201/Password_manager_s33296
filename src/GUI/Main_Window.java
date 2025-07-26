@@ -7,6 +7,8 @@ import Core.TableModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 
 public class Main_Window extends BaseWindow {
@@ -24,8 +26,24 @@ public class Main_Window extends BaseWindow {
 
         setTitle("Password manager");
         setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
+
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int res = JOptionPane.showConfirmDialog(
+                        Main_Window.this,
+                        "Are yoy sure?",
+                        "Confrim exit",
+                        JOptionPane.YES_NO_OPTION
+                );
+
+                if (res == JOptionPane.YES_OPTION) {
+                    Loader.writeFile(db, masterPassword, currentFile);
+                    dispose();
+                }
+            }
+        });
 
         tableModel = new TableModel(db.getEntries());
         pasTab = new JTable(tableModel);
